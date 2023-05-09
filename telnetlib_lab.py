@@ -1,11 +1,9 @@
 import getpass
 import telnetlib
 import time
-
 host = "172.31.105.4"
 user = input("Enter username: ")
 password = getpass.getpass()
-
 tn = telnetlib.Telnet(host, 23, 6)
 
 tn.read_until(b"Username:")
@@ -31,8 +29,6 @@ tn.write(b"do show ip int br\n")
 time.sleep(2)
 tn.write(b"exit\n")
 time.sleep(1)
-
 output = tn.read_very_eager()
 print(output.decode('ascii'))
-
 tn.close()
